@@ -1,0 +1,35 @@
+<h1>Pipes | </h1>
+<div class="row">
+    <div class="col-1">
+        
+    </div>
+    <div class="col-10">
+        pre Name:::  {{name}}
+        <br>
+        post Name::  {{name|uppercase}}
+        <br>
+        <hr>
+            pre Branch::   {{branch}}
+            <br>
+            post Branch::   {{branch|titlecase}}
+            <br>
+            <hr>
+            before:::   {{currentDate}}
+            <br>
+            after:::   {{currentDate|date:'dd/MM/yyyy'}}
+            <br>
+            after3:::    {{currentDate|date:'dd MMM yyyy'}}
+            <br>
+            time::    {{currentDate|date:'hh:mm:ss'}}
+            <br>
+            <!-- time::    {{currentTime| async |date:'hh:mm:ss'}} -->
+            <hr>
+            <p>The current time is: {{ currentDate | date:'hh:mm':'IST' }}</p>
+
+<p>The hero's birthday is in {{ currentDate | date:'MMM' | uppercase }}</p>
+    </div>
+    
+    <div class="col-1">
+
+    </div>
+</div>

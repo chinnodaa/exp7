@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="col-6">
+
+      <div class="col-6">
+        <h2>Reactive forms</h2>
+        <form  [formGroup]="signIn" (ngSubmit)="submit()">
+            <div class="container">
+              <h1>Sign Up</h1>
+              <p>Please fill in this form to create an account.</p>
+              <hr>
+          
+              <label for="email"><b>Email</b></label>
+              <input type="text" formControlName="email" placeholder="Enter Email" name="email" required ngModel="email">
+              
+    
+              <label for="reg"><b>Registration no.</b></label>
+              <input type="text" formControlName="reg" placeholder="Registration no" name="reg" required>
+          
+              <label for="psw"><b>Password</b></label>
+              <input type="password" formControlName="password" placeholder="Enter Password" name="psw" required>
+          
+              <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+              </label>
+          
+              <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+          
+              <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="submit" [disabled]="signUp.invalid" (click)="reactivesubmit()" class="signupbtn">submit</button>
+              </div>
+            </div>
+          </form>
+    
+    </div>
+
+    </div>
+    
+    <div class="col-6">
+     
+        <div class="form_wrapper">
+            <div class="form_container">
+              <div class="title_container">
+                <h2>Template driven  Registration Form</h2>
+              </div>
+              <div class="row clearfix">
+                <div class="">
+                    <form #signUp="ngForm">
+                        {{signUp.valid}}
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                      <input type="email" id="email" #name="ngModel" name="email" [(ngModel)]="student.email" placeholder="email" minlength="5" required >
+                    </div>
+                    @if(name.touched && name.errors?.['required']){
+                        <span class="text-danger">please enter something</span>
+                    }
+                    @else if( name.touched && name.errors?.['minlength']){
+                        <span class="text-danger">enter your email only more than 5 char</span>
+                    }
+                    
+                    <!-- {{student.email}} -->
+                    <br>
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                      <input type="password" id="pass" name="password" [(ngModel)]="student.password" placeholder="Password" required >
+                    </div>
+                    <!-- {{student.password}} -->
+                    
+                    <div class="row clearfix">
+                      <div class="col_half">
+                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                          <input type="text" id="fname" name="name" [(ngModel)]="student.fname" placeholder="First Name" required>
+                        </div>
+                      </div>
+                      <!-- {{student.fname}} -->
+                      
+                    </div>
+                        
+                      <div class="input_field checkbox_option" required>
+                          <input type="checkbox" id="cb1" [(ngModel)]="student.isChecked" required>
+                          <label for="cb1">I agree with terms and conditions</label>
+                      </div>
+                      
+                    <input class="button" (click)="submit()" [disabled]="!signUp.valid" type="submit" value="Register" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+    </div>
+
+    <!-- {{student | json}} -->
+    
+</div>
+
+
+
